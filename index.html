@@ -741,7 +741,7 @@ main {
 
     <div class="hero-overlay">
       <h1>A dança une-nos.<br>Tu fazes parte.</h1>
-      <button class="button" type="button" onclick="abrirClube()">
+      <button class="button" id="botao-entrar-clube" type="button" onclick="abrirClube()">
         ENTRAR NO CLUBE
       </button>
     </div>
@@ -951,6 +951,24 @@ function fecharClube() {
   document.getElementById("painel-video").style.display = "block";
 }
 
+function atualizarBotaoEntrada() {
+  const botao = document.getElementById("botao-entrar-clube");
+  if (!botao) return;
+  botao.textContent = localStorage.getItem("benAnaMembro") === "sim"
+    ? "ENTRAR NA ÁREA DE ALUNOS"
+    : "ENTRAR NO CLUBE";
+}
+
+window.addEventListener("pageshow", () => {
+  const painelVideo = document.getElementById("painel-video");
+  const painelInscricao = document.getElementById("painel-inscricao");
+  if (painelVideo && painelInscricao) {
+    painelVideo.style.display = "block";
+    painelInscricao.style.display = "none";
+  }
+  atualizarBotaoEntrada();
+});
+
 document.getElementById("formulario-clube").addEventListener("submit", async function(event) {
   event.preventDefault();
 
@@ -971,6 +989,10 @@ document.getElementById("formulario-clube").addEventListener("submit", async fun
   botao.disabled = true;
   botao.textContent = "A ENVIAR...";
 
+  // Guarda a entrada neste dispositivo para não voltar a pedir os dados.
+  localStorage.setItem("benAnaMembro", "sim");
+  let envioConfirmado = false;
+
   try {
     await fetch("https://script.google.com/macros/s/AKfycbxsD2c-pmJO0RvsYxst4H7uycRMmbcDg0OAYaR_pJfzAht3y-lqp3lidzCrXoRtY7oSlQ/exec", {
       method: "POST",
@@ -980,17 +1002,20 @@ document.getElementById("formulario-clube").addEventListener("submit", async fun
       },
       body: JSON.stringify(dados)
     });
-
-  localStorage.setItem("benAnaMembro", "sim");
-this.reset();
-window.location.href = "membros.html";
+    envioConfirmado = true;
 
   } catch (erro) {
-    alert("Não foi possível enviar. Tenta novamente.");
+    console.error("Não foi possível enviar os dados do registo:", erro);
   } finally {
     botao.disabled = false;
     botao.textContent = textoOriginal;
   }
+
+  this.reset();
+  if (!envioConfirmado) {
+    alert("A entrada ficou guardada neste dispositivo, mas não consegui enviar os teus dados. O contacto poderá não ter sido registado.");
+  }
+  window.location.replace("membros.html");
 });
 
 </script>
