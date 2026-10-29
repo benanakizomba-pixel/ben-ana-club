@@ -146,6 +146,10 @@
   transform: translateX(-100%);
 }
 
+.hero-slider.mostrar-inscricao .hero-inscricao {
+  display: block;
+}
+
 .hero-inscricao {
   display: none;
   min-height: 520px;
@@ -941,14 +945,12 @@ function abrirClube() {
     return;
   }
 
-  document.getElementById("painel-video").style.display = "none";
-  document.getElementById("painel-inscricao").style.display = "block";
+  document.getElementById("hero-slider").classList.add("mostrar-inscricao");
 }
 
 
 function fecharClube() {
-  document.getElementById("painel-inscricao").style.display = "none";
-  document.getElementById("painel-video").style.display = "block";
+  document.getElementById("hero-slider").classList.remove("mostrar-inscricao");
 }
 
 function atualizarBotaoEntrada() {
@@ -960,12 +962,10 @@ function atualizarBotaoEntrada() {
 }
 
 window.addEventListener("pageshow", () => {
-  const painelVideo = document.getElementById("painel-video");
-  const painelInscricao = document.getElementById("painel-inscricao");
-  if (painelVideo && painelInscricao) {
-    painelVideo.style.display = "block";
-    painelInscricao.style.display = "none";
-  }
+  const slider = document.getElementById("hero-slider");
+  if (slider) slider.classList.remove("mostrar-inscricao");
+  document.getElementById("painel-video")?.style.removeProperty("display");
+  document.getElementById("painel-inscricao")?.style.removeProperty("display");
   atualizarBotaoEntrada();
 });
 
