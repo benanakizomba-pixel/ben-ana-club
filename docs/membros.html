@@ -127,19 +127,9 @@
   <h3>📍 Onde dançamos — Ginasio Corporeus Montenegro Faro</h3>
   <p>Conhece o espaço onde partilhamos a paixão pela dança.</p>
 
-  <div style="width:100%; border:1px solid #d8b45a; border-radius:12px; overflow:hidden; background:#000;">
-    <video
-      controls
-      playsinline
-      preload="metadata"
-      style="display:block; width:100%; max-height:420px; object-fit:contain;">
-      <source src="assets/Videos/sala-faro.mp4" type="video/mp4">
-      O teu navegador não consegue reproduzir este vídeo.
-    </video>
-  </div>
-
-  <a class="facebook-updates" href="https://www.facebook.com/share/1CMtgfZvnQ/" target="_blank" rel="noopener noreferrer">
-    Acompanhar novidades no Facebook
+  <a class="facebook-preview" href="https://www.facebook.com/share/1CMtgfZvnQ/" target="_blank" rel="noopener noreferrer" aria-label="Ver a página Ben & Ana no Facebook">
+    <img src="assets/stories/aulas.jpg" alt="Ben & Ana a dançar — abre a página do Facebook">
+    <span>Ver novidades no Facebook</span>
   </a>
 
   <p style="color:#d8b45a; font-size:12px; margin-top:12px;">
@@ -289,16 +279,33 @@
   text-align: center;
 }
 
-.facebook-updates {
+.facebook-preview {
+  position: relative;
   display: block;
-  margin: 14px 0 4px;
-  padding: 13px 16px;
+  margin: 12px 0 4px;
+  overflow: hidden;
+  border: 1px solid #d8b45a;
+  border-radius: 12px;
+  background: #000;
+}
+
+.facebook-preview img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.facebook-preview span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 14px 16px;
   color: #111;
   font-weight: bold;
   text-align: center;
-  text-decoration: none;
   background: #d8b45a;
-  border-radius: 10px;
 }
 
 @media (max-width: 420px) {
