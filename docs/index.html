@@ -127,23 +127,18 @@
 
 .hero-slider {
   position: relative;
-  display: grid;
-  grid-template-columns: 100% 100%;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  transition: transform 0.55s ease;
 }
 
 .hero-slider .hero {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-}
-
-.hero-slider.mostrar-inscricao {
-  transform: translateX(-100%);
 }
 
 .hero-slider.mostrar-inscricao .hero-inscricao {
@@ -550,8 +545,8 @@ main {
 }
 
 .hero-slider {
-  display: grid;
-  grid-template-columns: 100% 100%;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   overflow: hidden;
   margin: 0 auto 18px;
@@ -946,11 +941,13 @@ function abrirClube() {
   }
 
   document.getElementById("hero-slider").classList.add("mostrar-inscricao");
+  document.getElementById("painel-inscricao").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 
 function fecharClube() {
   document.getElementById("hero-slider").classList.remove("mostrar-inscricao");
+  document.getElementById("painel-video").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function atualizarBotaoEntrada() {
@@ -966,6 +963,7 @@ window.addEventListener("pageshow", () => {
   if (slider) slider.classList.remove("mostrar-inscricao");
   document.getElementById("painel-video")?.style.removeProperty("display");
   document.getElementById("painel-inscricao")?.style.removeProperty("display");
+  window.scrollTo(0, 0);
   atualizarBotaoEntrada();
 });
 
