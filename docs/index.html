@@ -354,6 +354,57 @@ min-height: 340px;
   margin: 0 10px 12px;
 }
 
+.event-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  gap: 20px;
+  align-items: center;
+  margin: 18px 0;
+  padding: 14px;
+  background: #101010;
+  border: 1px solid #d8b45a;
+  border-radius: 14px;
+}
+
+.event-feature-posters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.event-feature-posters img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.event-feature-details .event-label {
+  color: #d8b45a;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.event-feature-details h3 {
+  margin: 8px 0;
+  color: #e6c567;
+  font-size: 22px;
+}
+
+.event-feature-details p,
+.event-feature-details li {
+  color: #ddd;
+  line-height: 1.55;
+}
+
+.event-feature-details ul {
+  padding-left: 20px;
+}
+
 .tiktok-thumbnail {
   display: block;
   position: relative;
@@ -617,6 +668,20 @@ main {
 }
 
 @media (max-width: 600px) {
+  .event-feature {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 10px;
+  }
+
+  .event-feature-posters {
+    gap: 6px;
+  }
+
+  .event-feature-details h3 {
+    font-size: 20px;
+  }
+
   main {
     width: 100%;
     max-width: 600px;
@@ -912,6 +977,22 @@ main {
 <section id="eventos" class="content-section">
   <h2>Eventos Ben & Ana</h2>
   <p>Descobre workshops, festivais e viagens connosco.</p>
+
+  <article class="event-feature">
+    <div class="event-feature-posters">
+      <img src="assets/stories/ginga-noel-soiree-2026.jpg" alt="Cartaz da noite Ginga de Noël, 19 de dezembro de 2026, em Gardanne">
+      <img src="assets/stories/ginga-noel-masterclass-2026.jpg" alt="Cartaz da masterclass Ben & Ana de Kizomba Fusion, das 18h às 21h">
+    </div>
+    <div class="event-feature-details">
+      <span class="event-label">Evento em França · 19 de dezembro de 2026</span>
+      <h3>Ginga de Noël — Gardanne</h3>
+      <ul>
+        <li>Noite 100% Kizomba com DJ Diablo & DJ Pumba.</li>
+        <li>Masterclass Ben & Ana de Kizomba Fusion, das 18h às 21h (3 horas).</li>
+        <li><strong>Le Chêne Vert</strong>, Zone d’Activité, 29 Bompertuis, 13120 Gardanne, França.</li>
+      </ul>
+    </div>
+  </article>
 
   <div class="video-gallery">
     
