@@ -149,13 +149,13 @@
   <h3>Aulas de Faro</h3>
   <p>Escolhe a aula que queres rever:</p>
   <div class="faro-lesson-options" role="group" aria-label="Selecionar aula de Faro">
-    <button class="faro-lesson-option is-selected" type="button" data-video-id="fP3bpG11qrg" data-title="Aula de Kizomba — Faro · 28/10/2026" aria-pressed="true">
+    <button class="faro-lesson-option is-selected" type="button" data-player-id="faro-lesson-player" data-video-id="fP3bpG11qrg" data-title="Aula de Kizomba — Faro · 28/10/2026" aria-pressed="true">
       <strong>Kizomba</strong><span>28/10/2026</span>
     </button>
-    <button class="faro-lesson-option" type="button" data-video-id="NOyOzs2ytog" data-title="Aula de Bachata — Faro · 28/10/2026" aria-pressed="false">
+    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="NOyOzs2ytog" data-title="Aula de Bachata — Faro · 28/10/2026" aria-pressed="false">
       <strong>Bachata</strong><span>28/10/2026</span>
     </button>
-    <button class="faro-lesson-option" type="button" data-video-id="eqdTkzF9StM" data-title="Aula de Salsa — Faro · 28/10/2026" aria-pressed="false">
+    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="eqdTkzF9StM" data-title="Aula de Salsa — Faro · 28/10/2026" aria-pressed="false">
       <strong>Salsa</strong><span>28/10/2026</span>
     </button>
   </div>
@@ -177,40 +177,26 @@
 <section class="card">
   <h3>Aulas de Huelva</h3>
   <p>Escolhe a aula que queres rever.</p>
-  <div class="aulas-grid">
-    <div class="aula-video">
-      <h3>AULA 1 — HUELVA</h3>
-      <p>27/10/2026</p>
-      <iframe
-        src="https://www.youtube.com/embed/Nf2lvi65zf4"
-        title="Aula 1 de Kizomba — Huelva"
-        loading="lazy"
-        style="width:100%; aspect-ratio:16/9; border:0; border-radius:10px;"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="aula-video">
-      <h3>AULA 2 — HUELVA</h3>
-      <p>27/10/2026</p>
-      <iframe
-        src="https://www.youtube.com/embed/TtGqF4eWOJA"
-        title="Aula 2 de Kizomba — Huelva"
-        loading="lazy"
-        style="width:100%; aspect-ratio:16/9; border:0; border-radius:10px;"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <div class="aula-video">
-      <h3>AULA 3 — HUELVA</h3>
-      <p>27/10/2026</p>
-      <iframe
-        src="https://www.youtube.com/embed/hurB27oR1L0"
-        title="Aula 3 de Kizomba — Huelva"
-        loading="lazy"
-        style="width:100%; aspect-ratio:16/9; border:0; border-radius:10px;"
-        allowfullscreen>
-      </iframe>
-    </div>
+  <div class="faro-lesson-options" role="group" aria-label="Selecionar aula de Huelva">
+    <button class="faro-lesson-option is-selected" type="button" data-player-id="huelva-lesson-player" data-video-id="Nf2lvi65zf4" data-title="Kizomba 1 — Huelva · 27/10/2026" aria-pressed="true">
+      <strong>Kizomba 1</strong><span>27/10/2026</span>
+    </button>
+    <button class="faro-lesson-option" type="button" data-player-id="huelva-lesson-player" data-video-id="TtGqF4eWOJA" data-title="Kizomba 2 — Huelva · 27/10/2026" aria-pressed="false">
+      <strong>Kizomba 2</strong><span>27/10/2026</span>
+    </button>
+    <button class="faro-lesson-option" type="button" data-player-id="huelva-lesson-player" data-video-id="hurB27oR1L0" data-title="Kizomba 3 — Huelva · 27/10/2026" aria-pressed="false">
+      <strong>Kizomba 3</strong><span>27/10/2026</span>
+    </button>
+  </div>
+  <div class="playlist-player">
+    <iframe id="huelva-lesson-player"
+      src="https://www.youtube.com/embed/Nf2lvi65zf4"
+      title="Kizomba 1 — Huelva · 27/10/2026"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
   </div>
   <a href="https://www.youtube.com/playlist?list=PLJzBRBCa_HtS"
      target="_blank"
@@ -356,8 +342,9 @@
 <script>
 document.querySelectorAll('.faro-lesson-option').forEach((button) => {
   button.addEventListener('click', () => {
-    const player = document.getElementById('faro-lesson-player');
-    document.querySelectorAll('.faro-lesson-option').forEach((option) => {
+    const player = document.getElementById(button.dataset.playerId);
+    const options = button.closest('.card').querySelectorAll('.faro-lesson-option');
+    options.forEach((option) => {
       const selected = option === button;
       option.classList.toggle('is-selected', selected);
       option.setAttribute('aria-pressed', String(selected));
