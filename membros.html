@@ -146,7 +146,6 @@
       </p>
     </section>
 
-    
 <section class="card">
   <h3>📍 Onde dançamos — Ginasio Corporeus Montenegro Faro</h3>
   <p>Conhece o espaço onde partilhamos a paixão pela dança.</p>
@@ -332,6 +331,33 @@
   background: #d8b45a;
 }
 
+.instagram-news {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 16px;
+  padding: 18px;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(110deg, #21131d, #171414 58%, #1d1710);
+  border: 1px solid #b75b71;
+  border-radius: 14px;
+}
+.instagram-news:focus-visible { outline: 3px solid #d8b45a; outline-offset: 3px; }
+.instagram-news-icon {
+  display: grid;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #7942a1, #d84370 58%, #f0a33a);
+  font-size: 25px;
+}
+.instagram-news strong, .instagram-news small { display: block; }
+.instagram-news strong { color: #f1d374; line-height: 1.4; }
+.instagram-news small { margin-top: 4px; color: #d0c9c9; line-height: 1.4; }
+
 @media (max-width: 420px) {
   .faro-lesson-options { gap: 7px; }
   .faro-lesson-option { min-height: 66px; padding: 9px 7px; font-size: 14px; }
@@ -402,6 +428,15 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
 });
 </script>
 
+    <a class="instagram-news"
+       href="https://www.instagram.com/reel/DYNbjWAo5Cx/?utm_source=ig_web_copy_link&amp;cplk=MzRlODBiNWFlZA==&amp;srtk=MzRlODBiNWFlZA=="
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Acompanha as nossas novidades no Instagram (abre numa nova janela)">
+      <span class="instagram-news-icon" aria-hidden="true">◎</span>
+      <span><strong>Acompanha as nossas novidades no Instagram</strong>
+        <small>Vê o Reel mais recente do BEN &amp; ANA CLUB · Abrir Instagram ↗</small>
+      </span>
+    </a>
     <a class="back" href="index.html">← Voltar ao BEN & ANA CLUB</a>
   </main>
 
