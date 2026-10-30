@@ -796,8 +796,51 @@ main {
     color: #1DB954 !important;
 }
 </style>
+<style>
+  .analytics-consent {
+    position: fixed;
+    z-index: 10000;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    max-width: 640px;
+    margin: auto;
+    padding: 16px;
+    color: #fff;
+    background: #171717;
+    border: 1px solid #d8b45a;
+    border-radius: 14px;
+    box-shadow: 0 8px 28px #000b;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .analytics-consent[hidden] { display: none; }
+  .analytics-consent p { margin: 0 0 12px; }
+  .analytics-consent-actions { display: flex; gap: 8px; }
+  .analytics-consent button, .analytics-preferences {
+    padding: 9px 12px;
+    color: #111;
+    background: #d8b45a;
+    border: 1px solid #d8b45a;
+    border-radius: 8px;
+    font: inherit;
+    cursor: pointer;
+  }
+  .analytics-consent button.secondary, .analytics-preferences {
+    color: #fff;
+    background: #222;
+  }
+  .analytics-preferences { padding: 4px 8px; border-color: #514525; font-size: 12px; }
+</style>
 </head>
 <body>
+  <aside class="analytics-consent" id="analytics-consent" role="dialog" aria-label="Preferências de medição" hidden>
+    <p>Podemos usar o Google Analytics para medir visitas e melhorar o BEN & ANA CLUB? A medição só começa se aceitares. Podes recusar ou alterar esta escolha mais tarde.</p>
+    <div class="analytics-consent-actions">
+      <button type="button" id="analytics-accept">Aceitar</button>
+      <button type="button" class="secondary" id="analytics-reject">Recusar</button>
+    </div>
+  </aside>
   <header>
     <div class="logo">BEN & ANA</div>
     <div class="subtitle">CLUB · DANCE · LIFESTYLE</div>
@@ -1051,7 +1094,41 @@ main {
   </div>
 </section>
 
+<footer><button type="button" class="analytics-preferences" id="analytics-preferences">Preferências de cookies</button></footer>
+
 <script>
+
+(() => {
+  const id = 'G-PM1MYSXL8N';
+  const key = 'benAnaAnalyticsConsent';
+  const banner = document.getElementById('analytics-consent');
+  const readChoice = () => { try { return localStorage.getItem(key); } catch { return null; } };
+  const writeChoice = (value) => { try { localStorage.setItem(key, value); } catch {} };
+  function loadAnalytics() {
+    if (window.__benAnaAnalyticsLoaded) return;
+    window.__benAnaAnalyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(script);
+  }
+  const showBanner = () => { banner.hidden = false; };
+  document.getElementById('analytics-accept').addEventListener('click', () => {
+    writeChoice('accepted'); banner.hidden = true; loadAnalytics();
+  });
+  document.getElementById('analytics-reject').addEventListener('click', () => {
+    const wasLoaded = Boolean(window.__benAnaAnalyticsLoaded);
+    writeChoice('rejected'); banner.hidden = true;
+    if (wasLoaded) window.location.reload();
+  });
+  document.getElementById('analytics-preferences').addEventListener('click', showBanner);
+  if (readChoice() === 'accepted') loadAnalytics();
+  else if (!readChoice()) showBanner();
+})();
 
 function abrirClube() {
   if (localStorage.getItem("benAnaMembro") === "sim") {
