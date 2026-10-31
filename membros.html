@@ -150,9 +150,9 @@
   <h3>📍 Onde dançamos — Ginasio Corporeus Montenegro Faro</h3>
   <p>Conhece o espaço onde partilhamos a paixão pela dança.</p>
 
-  <a class="facebook-preview" href="https://www.facebook.com/share/1CMtgfZvnQ/" target="_blank" rel="noopener noreferrer" aria-label="Ver a página Ben & Ana no Facebook">
+  <a class="facebook-preview" href="https://www.facebook.com/share/1CMtgfZvnQ/" target="_blank" rel="noopener noreferrer" aria-label="Ver a página Ben & Ana no Facebook" data-i18n-aria="facebook-aria">
     <img src="assets/stories/aulas.jpg" alt="Ben & Ana a dançar — abre a página do Facebook">
-    <span>Ver novidades no Facebook</span>
+    <span data-i18n="facebook-novidades">Ver novidades no Facebook</span>
   </a>
 
   <p style="color:#d8b45a; font-size:12px; margin-top:12px;">
@@ -446,6 +446,12 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
 
   <footer>© BEN & ANA CLUB<br><button type="button" class="analytics-preferences" id="analytics-preferences">Preferências de cookies</button></footer>
   <script>
+  const idiomaFrances = navigator.language?.toLowerCase().startsWith("fr") || false;
+  if (idiomaFrances) {
+    document.documentElement.lang = "fr";
+    document.querySelector('[data-i18n="facebook-novidades"]').textContent = "Voir les nouveautés sur Facebook";
+    document.querySelector('[data-i18n-aria="facebook-aria"]').setAttribute("aria-label", "Voir la page Ben & Ana sur Facebook");
+  }
   (() => {
     const id = 'G-PM1MYSXL8W';
     const key = 'benAnaAnalyticsConsent';
