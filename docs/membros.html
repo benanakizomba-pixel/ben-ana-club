@@ -186,7 +186,7 @@
       allowfullscreen>
     </iframe>
   </div>
-  <a class="faro-playlist-link" href="https://www.youtube.com/playlist?list=PLLAe5XsoHqFE" target="_blank" rel="noopener noreferrer">Ver a playlist completa no YouTube</a>
+  <a class="faro-playlist-link" data-i18n="playlist-completa" href="https://www.youtube.com/playlist?list=PLLAe5XsoHqFE" target="_blank" rel="noopener noreferrer">Ver a playlist completa no YouTube</a>
 </section>
 
 
@@ -219,29 +219,29 @@
      target="_blank"
      rel="noopener noreferrer"
      style="display:block; margin:16px 0; text-align:center; color:#d8b45a;">
-    Ver todas as aulas de Huelva no YouTube
+    <span data-i18n="aulas-huelva">Ver todas as aulas de Huelva no YouTube</span>
   </a>
   <a class="aula-quadrado"
      href="https://youtu.be/12Z1KeDmm-Y"
      target="_blank"
      rel="noopener noreferrer">
     <span class="aula-numero">OUTRAS</span>
-    <span>Ver outras aulas</span>
-    <small>Mais datas</small>
+    <span data-i18n="outras-aulas">Ver outras aulas</span>
+    <small data-i18n="mais-datas">Mais datas</small>
     <span class="aula-play">＋</span>
   </a>
 </section>
 
 <section class="card instagram-gallery" aria-labelledby="instagram-gallery-title">
   <h3 id="instagram-gallery-title">Novidades do Instagram</h3>
-  <p><span class="instagram-cta-label">CLICA PARA VER</span> <span class="instagram-cta-arrow">⬇️</span></p>
+  <p><span class="instagram-cta-label" data-i18n="instagram-ver">CLICA PARA VER</span> <span class="instagram-cta-arrow">⬇️</span></p>
   <div class="instagram-embed-wrap">
     <blockquote class="instagram-media"
       data-instgrm-permalink="https://www.instagram.com/benyanakizomba/"
       data-instgrm-version="14"
       aria-label="Perfil BEN &amp; ANA Kizomba no Instagram">
       <a href="https://www.instagram.com/benyanakizomba/" target="_blank" rel="noopener noreferrer">
-        Ver o perfil @benyanakizomba no Instagram
+        <span data-i18n="instagram-perfil">Ver o perfil @benyanakizomba no Instagram</span>
       </a>
     </blockquote>
   </div>
@@ -441,7 +441,7 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
 });
 </script>
 
-    <a class="back" href="index.html">← Voltar ao BEN & ANA CLUB</a>
+    <a class="back" href="index.html" data-i18n="voltar-clube">← Voltar ao BEN & ANA CLUB</a>
   </main>
 
   <footer>© BEN & ANA CLUB<br><button type="button" class="analytics-preferences" id="analytics-preferences">Preferências de cookies</button></footer>
@@ -449,7 +449,19 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
   const idiomaFrances = navigator.language?.toLowerCase().startsWith("fr") || false;
   if (idiomaFrances) {
     document.documentElement.lang = "fr";
-    document.querySelector('[data-i18n="facebook-novidades"]').textContent = "Voir les nouveautés sur Facebook";
+    const traducoes = {
+      "facebook-novidades": "Voir les nouveautés sur Facebook",
+      "playlist-completa": "Voir la playlist complète sur YouTube",
+      "aulas-huelva": "Voir tous les cours de Huelva sur YouTube",
+      "outras-aulas": "Voir d’autres cours",
+      "mais-datas": "Plus de dates",
+      "instagram-ver": "CLIQUEZ POUR VOIR",
+      "instagram-perfil": "Voir le profil @benyanakizomba sur Instagram",
+      "voltar-clube": "← Retour au BEN & ANA CLUB"
+    };
+    document.querySelectorAll("[data-i18n]").forEach((elemento) => {
+      elemento.textContent = traducoes[elemento.dataset.i18n] || elemento.textContent;
+    });
     document.querySelector('[data-i18n-aria="facebook-aria"]').setAttribute("aria-label", "Voir la page Ben & Ana sur Facebook");
   }
   (() => {

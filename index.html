@@ -889,10 +889,10 @@ main {
       <label for="telefone">Número de telemóvel</label>
       <input type="tel" id="telefone" name="telefone" placeholder="+351 912 345 678" required>
 
-      <button class="button" type="submit">ADERIR AO CLUBE</button>
+      <button class="button" type="submit" data-i18n="clube-aderir">ADERIR AO CLUBE</button>
     </form>
 
-    <button class="button voltar-video" type="button" onclick="fecharClube()">
+    <button class="button voltar-video" type="button" onclick="fecharClube()" data-i18n="voltar-video">
       VOLTAR AO VÍDEO
     </button>
   </section>
@@ -976,7 +976,7 @@ main {
         <li>Ben & Ana — Kizomba.</li>
         <li><strong>Quinta do Príncipe</strong>, Chaves, Portugal.</li>
       </ul>
-      <a class="event-ticket-link" href="https://lasalsadelbaile.com/VII-aquae-flaviae/Benpedrosa" target="_blank" rel="noopener noreferrer">COMPRAR BILHETES</a>
+      <a class="event-ticket-link" data-i18n="comprar-bilhetes" href="https://lasalsadelbaile.com/VII-aquae-flaviae/Benpedrosa" target="_blank" rel="noopener noreferrer">COMPRAR BILHETES</a>
     </div>
   </article>
 
@@ -1151,8 +1151,11 @@ const idiomaFrances = navigator.language?.toLowerCase().startsWith("fr") || fals
 if (idiomaFrances) {
   document.documentElement.lang = "fr";
   const traducoes = {
+    "clube-aderir": "REJOINDRE LE CLUB",
+    "voltar-video": "RETOUR À LA VIDÉO",
     "evento-inscricao": "S’INSCRIRE À L’ÉVÉNEMENT",
-    "evento-facebook": "VOIR L’ÉVÉNEMENT SUR FACEBOOK"
+    "evento-facebook": "VOIR L’ÉVÉNEMENT SUR FACEBOOK",
+    "comprar-bilhetes": "ACHETER DES BILLETS"
   };
   document.querySelectorAll("[data-i18n]").forEach((elemento) => {
     elemento.textContent = traducoes[elemento.dataset.i18n] || elemento.textContent;
