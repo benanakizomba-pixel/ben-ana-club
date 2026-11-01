@@ -232,6 +232,33 @@
   </a>
 </section>
 
+<section class="card member-playlists" aria-labelledby="member-playlists-title">
+  <h3 id="member-playlists-title">Playlist Ben &amp; Ana</h3>
+  <p>Músicas para acompanhar as aulas e dançar connosco.</p>
+  <div class="member-spotify-grid">
+    <article class="member-spotify-card">
+      <h4>Música das Aulas</h4>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/6SNSlc83v9vEuYFM64uGv4?utm_source=generator&amp;theme=0"
+        title="Spotify: Música das Aulas Ben &amp; Ana"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        height="352">
+      </iframe>
+    </article>
+    <article class="member-spotify-card">
+      <h4>Músicas originais Ben &amp; Ana</h4>
+      <iframe
+        src="https://open.spotify.com/embed/artist/3BcealQqPR4XiOO1JvaDMU?utm_source=generator&amp;theme=0"
+        title="Spotify: Ben Pedrosa &amp; Ana — músicas originais"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        height="352">
+      </iframe>
+    </article>
+  </div>
+</section>
+
 <section class="card instagram-gallery" aria-labelledby="instagram-gallery-title">
   <h3 id="instagram-gallery-title">Novidades do Instagram</h3>
   <p><span class="instagram-cta-label" data-i18n="instagram-ver">CLICA PARA VER</span> <span class="instagram-cta-arrow">⬇️</span></p>
@@ -398,6 +425,33 @@
   font-weight: 700;
   text-align: center;
   text-decoration: none;
+}
+.member-spotify-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.member-spotify-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #3b301b;
+  border-radius: 12px;
+  background: #101010;
+}
+.member-spotify-card h4 {
+  margin: 12px;
+  color: #d8b45a;
+  font-size: 14px;
+}
+.member-spotify-card iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #000;
+}
+@media (max-width: 600px) {
+  .member-spotify-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 420px) {
