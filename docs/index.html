@@ -1085,6 +1085,7 @@ main {
 <section id="aulas" class="content-section">
   <h2>Aulas Ben & Ana</h2>
   <p>Aprende Kizomba, Bachata e Salsa connosco.</p>
+  <button class="button" id="botao-entrar-clube-aulas" type="button" onclick="abrirClube()">ENTRAR NO CLUBE</button>
 
   <div class="video-gallery">
     <article class="video-card">
@@ -1166,12 +1167,13 @@ function fecharClube() {
 }
 
 function atualizarBotaoEntrada() {
-  const botao = document.getElementById("botao-entrar-clube");
-  if (!botao) return;
+  const botoes = document.querySelectorAll("#botao-entrar-clube, #botao-entrar-clube-aulas");
+  if (!botoes.length) return;
   const eMembro = localStorage.getItem("benAnaMembro") === "sim";
-  botao.textContent = idiomaFrances
+  const texto = idiomaFrances
     ? (eMembro ? "ACCÉDER À L’ESPACE ÉLÈVES" : "ENTRER DANS LE CLUB")
     : (eMembro ? "ENTRAR NA ÁREA DE ALUNOS" : "ENTRAR NO CLUBE");
+  botoes.forEach((botao) => { botao.textContent = texto; });
 }
 
 window.addEventListener("pageshow", () => {
