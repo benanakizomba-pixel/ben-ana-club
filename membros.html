@@ -246,6 +246,15 @@
     </blockquote>
   </div>
 </section>
+<section class="card whatsapp-contact" aria-labelledby="whatsapp-contact-title">
+  <h3 id="whatsapp-contact-title" data-i18n="whatsapp-titulo">Fala connosco pelo WhatsApp</h3>
+  <p data-i18n="whatsapp-descricao">Tens alguma dúvida? Envia-nos uma mensagem e teremos todo o gosto em ajudar.</p>
+  <a class="whatsapp-contact-button"
+     href="https://wa.me/351964573054?text=Ol%C3%A1%21%20Vim%20da%20%C3%81rea%20de%20Alunos%20do%20BEN%20%26%20ANA%20CLUB%20e%20gostaria%20de%20falar%20convosco."
+     target="_blank" rel="noopener noreferrer" data-i18n="whatsapp-botao">
+    FALAR CONNOSCO NO WHATSAPP
+  </a>
+</section>
 <script async src="https://www.instagram.com/embed.js"></script>
 
 <style>
@@ -371,6 +380,26 @@
   margin: 1px auto !important;
 }
 
+.whatsapp-contact {
+  margin-top: 18px;
+  border-color: #277a4b;
+}
+.whatsapp-contact p {
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+.whatsapp-contact-button {
+  display: block;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #25d366;
+  color: #07150c;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
 @media (max-width: 420px) {
   .faro-lesson-options { gap: 7px; }
   .faro-lesson-option { min-height: 66px; padding: 9px 7px; font-size: 14px; }
@@ -457,6 +486,9 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
       "mais-datas": "Plus de dates",
       "instagram-ver": "CLIQUEZ POUR VOIR",
       "instagram-perfil": "Voir le profil @benyanakizomba sur Instagram",
+      "whatsapp-titulo": "Contactez-nous sur WhatsApp",
+      "whatsapp-descricao": "Une question ? Envoyez-nous un message, nous serons ravis de vous aider.",
+      "whatsapp-botao": "NOUS ÉCRIRE SUR WHATSAPP",
       "voltar-clube": "← Retour au BEN & ANA CLUB"
     };
     document.querySelectorAll("[data-i18n]").forEach((elemento) => {
