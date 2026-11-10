@@ -82,6 +82,41 @@
       border-color: #d8b45a;
     }
 
+    .ebook-card-content {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ebook-cover-link {
+      display: block;
+      overflow: hidden;
+      border: 1px solid #d8b45a;
+      border-radius: 8px;
+      line-height: 0;
+    }
+
+    .ebook-cover-link:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .ebook-cover-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .ebook-copy h3 {
+      font-size: 17px;
+    }
+
+    .ebook-copy .button {
+      display: block;
+      text-align: center;
+    }
+
     .button {
       display: inline-block;
       margin-top: 8px;
@@ -151,9 +186,16 @@
     </section>
 
 <section class="card ebook-card">
-  <h3 data-i18n="kizomba-ebook-titulo">📘 E-book: Kizomba desde zero</h3>
-  <p data-i18n="kizomba-ebook-descricao">Guia breve em espanhol com conselhos básicos para começar a dançar.</p>
-  <a class="button" href="assets/guia-basica-kizomba-ben-ana-es.pdf" target="_blank" rel="noopener noreferrer" data-i18n="kizomba-ebook-botao">Abrir o e-book</a>
+  <div class="ebook-card-content">
+    <a class="ebook-cover-link" href="assets/guia-basica-kizomba-ben-ana-es.pdf" target="_blank" rel="noopener noreferrer" aria-label="Clica na capa para abrir o e-book em espanhol" data-i18n-aria="kizomba-ebook-capa-aria">
+      <img src="assets/ebook-cover-kizomba.jpg" alt="Capa do e-book Kizomba desde zero" width="700" height="990" loading="lazy">
+    </a>
+    <div class="ebook-copy">
+      <h3 data-i18n="kizomba-ebook-titulo">📘 E-book: Kizomba desde zero</h3>
+      <p data-i18n="kizomba-ebook-descricao">Guia breve em espanhol com conselhos básicos para começar a dançar.</p>
+      <a class="button" href="assets/guia-basica-kizomba-ben-ana-es.pdf" target="_blank" rel="noopener noreferrer" data-i18n="kizomba-ebook-botao">Abrir o e-book</a>
+    </div>
+  </div>
 </section>
 
 <section class="card">
@@ -465,6 +507,9 @@
   .faro-lesson-options { gap: 7px; }
   .faro-lesson-option { min-height: 66px; padding: 9px 7px; font-size: 14px; }
   .faro-lesson-option span { font-size: 11px; }
+  .ebook-card-content { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+  .ebook-copy h3 { font-size: 15px; }
+  .ebook-copy .button { padding: 10px 8px; font-size: 12px; }
 }
 
 .aula-quadrado {
@@ -544,6 +589,7 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
       "kizomba-ebook-titulo": "📘 E-book : Kizomba depuis le début",
       "kizomba-ebook-descricao": "Petit guide en espagnol avec des conseils de base pour commencer à danser.",
       "kizomba-ebook-botao": "Ouvrir l’e-book",
+      "kizomba-ebook-capa-aria": "Cliquer sur la couverture pour ouvrir le guide en espagnol",
       "playlist-completa": "Voir la playlist complète sur YouTube",
       "aulas-huelva": "Voir tous les cours de Huelva sur YouTube",
       "outras-aulas": "Voir d’autres cours",
