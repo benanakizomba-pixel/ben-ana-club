@@ -90,11 +90,39 @@
     }
 
     .ebook-cover-link {
+      position: relative;
       display: block;
-      overflow: hidden;
-      border: 1px solid #d8b45a;
-      border-radius: 8px;
+      overflow: visible;
       line-height: 0;
+      filter: drop-shadow(4px 7px 6px #0009);
+      transform: rotate(-1deg);
+    }
+
+    .ebook-cover-link::before {
+      position: absolute;
+      z-index: 0;
+      top: 4px;
+      bottom: 8px;
+      left: 0;
+      width: 10px;
+      content: "";
+      background: linear-gradient(90deg, #4a3412, #d8b45a 48%, #7f5e23 78%, #271b08);
+      border: 1px solid #b58d36;
+      border-radius: 4px 0 0 4px;
+      transform: skewY(-4deg);
+    }
+
+    .ebook-cover-link::after {
+      position: absolute;
+      z-index: 2;
+      top: 6px;
+      right: 0;
+      bottom: 5px;
+      width: 4px;
+      content: "";
+      background: repeating-linear-gradient(0deg, #e8dfc9 0 2px, #c9b991 2px 3px);
+      border-radius: 0 3px 3px 0;
+      transform: skewY(2deg);
     }
 
     .ebook-cover-link:focus-visible {
@@ -103,9 +131,16 @@
     }
 
     .ebook-cover-link img {
+      position: relative;
+      z-index: 1;
       display: block;
-      width: 100%;
+      width: calc(100% - 9px);
+      margin-left: 9px;
       height: auto;
+      border: 1px solid #d8b45a;
+      border-radius: 2px 5px 5px 2px;
+      transform: perspective(700px) rotateY(-5deg);
+      transform-origin: left center;
     }
 
     .ebook-copy h3 {
@@ -507,9 +542,13 @@
   .faro-lesson-options { gap: 7px; }
   .faro-lesson-option { min-height: 66px; padding: 9px 7px; font-size: 14px; }
   .faro-lesson-option span { font-size: 11px; }
-  .ebook-card-content { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+  .ebook-card-content { grid-template-columns: 108px minmax(0, 1fr); gap: 12px; }
   .ebook-copy h3 { font-size: 15px; }
   .ebook-copy .button { padding: 10px 8px; font-size: 12px; }
+}
+
+@media (max-width: 360px) {
+  .ebook-card-content { grid-template-columns: 90px minmax(0, 1fr); }
 }
 
 .aula-quadrado {
