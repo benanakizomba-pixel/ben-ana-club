@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ben-ana-club-v27';
+const CACHE_NAME = 'ben-ana-club-v28';
 const APP_SHELL = [
   './',
   './index.html',
@@ -7,6 +7,7 @@ const APP_SHELL = [
   './offline.html',
   './manifest.webmanifest',
   './pwa-register.js',
+  './assets/guia-basica-kizomba-ben-ana-es.pdf',
   './assets/pwa-icon-192.png',
   './assets/pwa-icon-512.png',
   './assets/stories/aulas.jpg',
