@@ -4,24 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080808">
+  <meta name="description" content="Lê na app o guia básico de Kizomba desde zero, exclusivo para alunos Ben & Ana Club.">
   <title>E-book — BEN &amp; ANA CLUB</title>
   <style>
+    :root { color-scheme: dark; --gold: #d8b45a; --ink: #080808; --panel: #111; }
     * { box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; margin: 0; background: #080808; color: #fff; font-family: Arial, sans-serif; }
-    .topbar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 14px; min-height: 62px; padding: 10px 16px; padding-top: max(10px, env(safe-area-inset-top)); background: #111; border-bottom: 1px solid #3b301b; }
-    .back { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 9px 14px; border: 1px solid #d8b45a; border-radius: 8px; background: #d8b45a; color: #111; font-weight: 700; text-decoration: none; }
-    .title { overflow: hidden; color: #d8b45a; font-size: 14px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
-    .viewer { display: block; width: 100%; height: calc(100dvh - 63px - env(safe-area-inset-top)); border: 0; background: #171717; }
-    .fallback { margin: 0; padding: 10px 16px; color: #ccc; font-size: 13px; text-align: center; }
-    .fallback a { color: #d8b45a; }
+    html { min-height: 100%; background: var(--ink); }
+    body { min-height: 100vh; margin: 0; background: var(--ink); color: #fff; font-family: Arial, sans-serif; }
+    .topbar { position: sticky; top: 0; z-index: 5; padding: max(10px, env(safe-area-inset-top)) 14px 10px; background: rgb(17 17 17 / 97%); border-bottom: 1px solid #3b301b; box-shadow: 0 4px 18px rgb(0 0 0 / 24%); }
+    .top-row { display: flex; align-items: center; gap: 12px; max-width: 960px; margin: 0 auto; }
+    .back { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 9px 14px; border: 1px solid var(--gold); border-radius: 9px; background: var(--gold); color: #111; font-weight: 700; line-height: 1.2; text-decoration: none; }
+    .back:focus-visible, .page-button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .title { min-width: 0; overflow: hidden; color: var(--gold); font-size: 15px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .page-nav { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 960px; margin: 10px auto 0; }
+    .page-status { min-width: 92px; margin: 0; color: #f2e6c6; font-size: 14px; font-weight: 700; text-align: center; }
+    .page-button { min-height: 40px; padding: 8px 14px; border: 1px solid #6d5729; border-radius: 8px; background: #1a1a1a; color: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .page-button:hover:not(:disabled) { border-color: var(--gold); background: #242018; }
+    .page-button:disabled { opacity: .42; cursor: not-allowed; }
+    main { width: min(100% - 24px, 760px); margin: 18px auto 0; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+    .page-frame { margin: 0 auto; background: #f8f5ed; box-shadow: 0 8px 32px rgb(0 0 0 / 42%); }
+    .page-image { display: block; width: 100%; height: auto; -webkit-user-drag: none; -webkit-touch-callout: none; user-select: none; }
+    .hint { margin: 14px 0 0; color: #bdb7a9; font-size: 13px; line-height: 1.5; text-align: center; }
+    @media (max-width: 480px) {
+      .topbar { padding-right: 10px; padding-left: 10px; }
+      .top-row { gap: 9px; }
+      .back { max-width: 61%; min-height: 42px; padding: 8px 10px; font-size: 14px; }
+      .title { font-size: 13px; }
+      .page-nav { gap: 8px; }
+      .page-button { min-height: 38px; padding: 8px 10px; font-size: 13px; }
+      main { width: min(100% - 16px, 760px); margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .page-image { animation: page-in 140ms ease-out; }
+      @keyframes page-in { from { opacity: .75; } to { opacity: 1; } }
+    }
   </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Navegação do e-book">
-    <a class="back" href="membros.html">← <span>Voltar à área de alunos</span></a>
-    <span class="title">E-book: Kizomba desde zero</span>
-  </nav>
-  <iframe class="viewer" src="assets/guia-basica-kizomba-ben-ana-es.pdf#toolbar=1&amp;navpanes=0&amp;view=FitH" title="E-book Kizomba desde zero"></iframe>
-  <p class="fallback">Se o e-book não aparecer, <a href="assets/guia-basica-kizomba-ben-ana-es.pdf" target="_blank" rel="noopener noreferrer">abre o PDF diretamente</a>.</p>
+  <header class="topbar">
+    <div class="top-row">
+      <a class="back" href="membros.html" aria-label="Voltar à área de alunos">← <span>Voltar à área de alunos</span></a>
+      <span class="title">E-book: Kizomba desde zero</span>
+    </div>
+    <nav class="page-nav" aria-label="Navegação das páginas do e-book">
+      <button class="page-button" id="previous-page" type="button" aria-label="Página anterior">← Anterior</button>
+      <p class="page-status" id="page-status" aria-live="polite">Página 1 de 4</p>
+      <button class="page-button" id="next-page" type="button" aria-label="Página seguinte">Seguinte →</button>
+    </nav>
+  </header>
+
+  <main>
+    <figure class="page-frame">
+      <img class="page-image" id="book-page" src="assets/ebook-pages/page-1.jpg" alt="Capa do e-book Kizomba desde zero" width="875" height="1240" fetchpriority="high" draggable="false">
+    </figure>
+    <p class="hint">Usa os botões para avançar ou voltar. Também podes deslizar para mudar de página.</p>
+  </main>
+
+  <script>
+    (() => {
+      const pages = [
+        { src: 'assets/ebook-pages/page-1.jpg', alt: 'Capa do e-book Kizomba desde zero' },
+        { src: 'assets/ebook-pages/page-2.jpg', alt: 'Página 1: postura confortável, frente a frente e pés alternados' },
+        { src: 'assets/ebook-pages/page-3.jpg', alt: 'Página 2: ouvir a música antes de acrescentar movimentos' },
+        { src: 'assets/ebook-pages/page-4.jpg', alt: 'Página 3: uma prática breve de Kizomba em casal' }
+      ];
+      let current = 0;
+      const image = document.getElementById('book-page');
+      const status = document.getElementById('page-status');
+      const previous = document.getElementById('previous-page');
+      const next = document.getElementById('next-page');
+
+      function showPage(index) {
+        current = Math.max(0, Math.min(pages.length - 1, index));
+        image.src = pages[current].src;
+        image.alt = pages[current].alt;
+        status.textContent = `Página ${current + 1} de ${pages.length}`;
+        previous.disabled = current === 0;
+        next.disabled = current === pages.length - 1;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      previous.addEventListener('click', () => showPage(current - 1));
+      next.addEventListener('click', () => showPage(current + 1));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') showPage(current - 1);
+        if (event.key === 'ArrowRight') showPage(current + 1);
+      });
+      let touchStartX = null;
+      image.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      image.addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const deltaX = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(deltaX) > 55) showPage(current + (deltaX < 0 ? 1 : -1));
+        touchStartX = null;
+      }, { passive: true });
+      document.querySelector('.page-frame').addEventListener('contextmenu', (event) => event.preventDefault());
+      showPage(0);
+    })();
+  </script>
 </body>
 </html>
