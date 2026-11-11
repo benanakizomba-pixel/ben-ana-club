@@ -1,9 +1,10 @@
-const CACHE_NAME = 'ben-ana-club-v32';
+const CACHE_NAME = 'ben-ana-club-v33';
 const APP_SHELL = [
   './',
   './index.html',
   './index-seguranca.html',
   './membros.html',
+  './ebook.html',
   './offline.html',
   './manifest.webmanifest',
   './pwa-register.js',
