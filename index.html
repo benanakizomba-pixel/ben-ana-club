@@ -822,14 +822,20 @@ main {
 .kem-ownership-label {
   position: absolute;
   top: 12px;
-  right: 12px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
   z-index: 1;
   display: inline-block;
-  padding: 7px 11px;
-  color: #fff4df;
-  font-size: 10px;
+  max-width: calc(100% - 24px);
+  padding: 0;
+  color: #e2bd63;
+  font-size: clamp(13px, 3vw, 16px);
   font-weight: 700;
-  letter-spacing: .09em;
+  letter-spacing: .07em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0, 0, 0, .78);
 }
 
