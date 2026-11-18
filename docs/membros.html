@@ -280,8 +280,14 @@
     
 <section class="card">
   <h3>Aulas de Huelva</h3>
+  <div class="huelva-week-nav" aria-label="Navegar pelas semanas de aulas">
+    <button id="huelva-week-older" type="button" aria-label="Semana anterior">‹</button>
+    <div class="huelva-week-label" id="huelva-week-label" aria-live="polite"><strong>Semana de 10/11/2026</strong><small>Mais recente</small></div>
+    <button id="huelva-week-newer" type="button" aria-label="Semana mais recente" disabled>›</button>
+  </div>
+  <p class="huelva-week-hint">Desliza para ver a semana anterior</p>
   <p>Escolhe a aula que queres rever.</p>
-  <div class="faro-lesson-options" role="group" aria-label="Selecionar aula de Huelva">
+  <div class="faro-lesson-options" id="huelva-lesson-options" role="group" aria-label="Selecionar aula de Huelva">
     <button class="faro-lesson-option is-selected" type="button" data-player-id="huelva-lesson-player" data-video-id="DalGsbQMyDY" data-title="Kizomba 1 — Huelva · 10/11/2026" aria-pressed="true">
       <strong>Kizomba 1</strong><span>10/11/2026</span>
     </button>
@@ -402,6 +408,15 @@
   gap: 10px;
   margin: 14px 0;
 }
+
+.huelva-week-nav { display: grid; grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 8px; align-items: center; margin-top: 14px; }
+.huelva-week-nav button { width: 42px; height: 42px; color: #d8b45a; font: inherit; font-size: 25px; line-height: 1; background: #101010; border: 1px solid #514525; border-radius: 11px; cursor: pointer; }
+.huelva-week-nav button:disabled { opacity: .35; cursor: default; }
+.huelva-week-label { text-align: center; color: #fff; }
+.huelva-week-label strong, .huelva-week-label small { display: block; }
+.huelva-week-label small, .huelva-week-hint { color: #bcbcbc; font-size: 12px; }
+.huelva-week-hint { margin: 8px 0 0; text-align: center; }
+#huelva-lesson-options { touch-action: pan-y; }
 
 .faro-lesson-option {
   display: flex;
@@ -542,6 +557,8 @@
   .faro-lesson-options { gap: 7px; }
   .faro-lesson-option { min-height: 66px; padding: 9px 7px; font-size: 14px; }
   .faro-lesson-option span { font-size: 11px; }
+  .huelva-week-nav { grid-template-columns: 38px minmax(0, 1fr) 38px; gap: 6px; }
+  .huelva-week-nav button { width: 38px; height: 38px; }
   .ebook-card-content { grid-template-columns: 108px minmax(0, 1fr); gap: 12px; }
   .ebook-copy h3 { font-size: 15px; }
   .ebook-copy .button { padding: 10px 8px; font-size: 12px; }
@@ -600,7 +617,7 @@
 </style>
 
 <script>
-document.querySelectorAll('.faro-lesson-option').forEach((button) => {
+const ligarBotaoAula = (button) => {
   button.addEventListener('click', () => {
     const player = document.getElementById(button.dataset.playerId);
     const options = button.closest('.card').querySelectorAll('.faro-lesson-option');
@@ -612,7 +629,42 @@ document.querySelectorAll('.faro-lesson-option').forEach((button) => {
     player.title = button.dataset.title;
     player.src = `https://www.youtube.com/embed/${button.dataset.videoId}`;
   });
-});
+};
+document.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
+
+(() => {
+  const weeks = [
+    { date: '10/11/2026', ids: ['DalGsbQMyDY', 'bHDCpcDSmYU', '9bo4FK53Lh8'] },
+    { date: '03/11/2026', ids: ['fU591Sk2a8c', 'fHwU-iZ-RjI', 'LxjL9yFv1uE'] }
+  ];
+  const options = document.getElementById('huelva-lesson-options');
+  const label = document.getElementById('huelva-week-label');
+  const older = document.getElementById('huelva-week-older');
+  const newer = document.getElementById('huelva-week-newer');
+  let weekIndex = 0;
+  function showWeek(index) {
+    weekIndex = Math.max(0, Math.min(index, weeks.length - 1));
+    const week = weeks[weekIndex];
+    label.innerHTML = `<strong>Semana de ${week.date}</strong><small>${weekIndex === 0 ? 'Mais recente' : 'Semana anterior'}</small>`;
+    older.disabled = weekIndex === weeks.length - 1;
+    newer.disabled = weekIndex === 0;
+    options.innerHTML = week.ids.map((id, i) => `<button class="faro-lesson-option${i === 0 ? ' is-selected' : ''}" type="button" data-player-id="huelva-lesson-player" data-video-id="${id}" data-title="Kizomba ${i + 1} — Huelva · ${week.date}" aria-pressed="${i === 0}"><strong>Kizomba ${i + 1}</strong><span>${week.date}</span></button>`).join('');
+    options.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
+    options.querySelector('.faro-lesson-option').click();
+  }
+  older.addEventListener('click', () => showWeek(weekIndex + 1));
+  newer.addEventListener('click', () => showWeek(weekIndex - 1));
+  let touchStartX = null;
+  options.addEventListener('touchstart', (event) => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+  options.addEventListener('touchend', (event) => {
+    if (touchStartX === null) return;
+    const distance = event.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(distance) > 50) showWeek(weekIndex + (distance < 0 ? 1 : -1));
+    touchStartX = null;
+  }, { passive: true });
+  options.addEventListener('touchcancel', () => { touchStartX = null; }, { passive: true });
+  showWeek(0);
+})();
 </script>
 
     <a class="back" href="index.html" data-i18n="voltar-clube">← Voltar ao BEN & ANA CLUB</a>
