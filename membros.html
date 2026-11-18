@@ -279,15 +279,15 @@
 
     
 <section class="card">
-  <h3>Aulas de Huelva</h3>
-  <div class="huelva-week-nav" aria-label="Navegar pelas semanas de aulas">
+  <h3>Clases de Huelva</h3>
+  <div class="huelva-week-nav" aria-label="Navegar por las semanas de clases">
     <button id="huelva-week-older" type="button" aria-label="Semana anterior">‹</button>
-    <div class="huelva-week-label" id="huelva-week-label" aria-live="polite"><strong>Semana de 10/11/2026</strong><small>Mais recente</small></div>
-    <button id="huelva-week-newer" type="button" aria-label="Semana mais recente" disabled>›</button>
+    <div class="huelva-week-label" id="huelva-week-label" aria-live="polite"><strong>Semana del 10/11/2026</strong><small>Más reciente</small></div>
+    <button id="huelva-week-newer" type="button" aria-label="Semana más reciente" disabled>›</button>
   </div>
-  <p class="huelva-week-hint">Desliza para ver a semana anterior</p>
-  <p>Escolhe a aula que queres rever.</p>
-  <div class="faro-lesson-options" id="huelva-lesson-options" role="group" aria-label="Selecionar aula de Huelva">
+  <p class="huelva-week-hint">Desliza para ver la semana anterior</p>
+  <p>Elige la clase que quieres volver a ver.</p>
+  <div class="faro-lesson-options" id="huelva-lesson-options" role="group" aria-label="Seleccionar clase de Huelva">
     <button class="faro-lesson-option is-selected" type="button" data-player-id="huelva-lesson-player" data-video-id="DalGsbQMyDY" data-title="Kizomba 1 — Huelva · 10/11/2026" aria-pressed="true">
       <strong>Kizomba 1</strong><span>10/11/2026</span>
     </button>
@@ -654,7 +654,7 @@ document.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
   function showWeek(index) {
     weekIndex = Math.max(0, Math.min(index, weeks.length - 1));
     const week = weeks[weekIndex];
-    label.innerHTML = `<strong>Semana de ${week.date}</strong><small>${weekIndex === 0 ? 'Mais recente' : 'Semana anterior'}</small>`;
+    label.innerHTML = `<strong>Semana del ${week.date}</strong><small>${weekIndex === 0 ? 'Más reciente' : 'Semana anterior'}</small>`;
     older.disabled = weekIndex === weeks.length - 1;
     newer.disabled = weekIndex === 0;
     options.innerHTML = week.ids.map((id, i) => `<button class="faro-lesson-option${i === 0 ? ' is-selected' : ''}" type="button" data-player-id="huelva-lesson-player" data-video-id="${id}" data-ratio="${week.ratios?.[i] || '16/9'}" data-title="Kizomba ${i + 1} — Huelva · ${week.date}" aria-pressed="${i === 0}"><strong>Kizomba ${i + 1}</strong><span>${week.date}</span></button>`).join('');
