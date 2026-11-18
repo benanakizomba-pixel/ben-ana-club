@@ -213,6 +213,31 @@ min-height: 340px;
   );
 }
 
+.hero-social-proof {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  color: #f5d986;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(10, 10, 10, .76);
+  border: 1px solid rgba(216, 180, 90, .78);
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .3);
+}
+.hero-social-proof:hover,
+.hero-social-proof:focus-visible {
+  color: #fff4cf;
+  background: rgba(20, 16, 8, .92);
+  outline: 2px solid rgba(216, 180, 90, .5);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .hero-video {
     width: calc(100% - 32px);
@@ -866,6 +891,9 @@ main {
 
     <div class="hero-overlay">
       <h1>A dança une-nos.<br>Tu fazes parte.</h1>
+      <a class="hero-social-proof" href="https://www.instagram.com/reel/DYNbjWAo5Cx/?avpt=MXNlaDVmbHBweGg1bA==" target="_blank" rel="noopener noreferrer" aria-label="Ver en Instagram el Reel con más de 2 millones de visualizaciones">
+        <span aria-hidden="true">▶</span> 2M+ visualizaciones · Ver Reel
+      </a>
       <button class="button" id="botao-entrar-clube" type="button" onclick="abrirClube()">
         ENTRAR NO CLUBE
       </button>
