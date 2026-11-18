@@ -394,6 +394,10 @@
   overflow: hidden;
   background: #000;
 }
+.playlist-player.is-vertical {
+  max-width: 380px;
+  aspect-ratio: 9 / 16;
+}
 
 .playlist-player iframe {
   display: block;
@@ -627,6 +631,10 @@ const ligarBotaoAula = (button) => {
       option.setAttribute('aria-pressed', String(selected));
     });
     player.title = button.dataset.title;
+    if (player.id === 'huelva-lesson-player') {
+      const frame = player.closest('.playlist-player');
+      frame.classList.toggle('is-vertical', button.dataset.ratio === '9/16');
+    }
     player.src = `https://www.youtube.com/embed/${button.dataset.videoId}`;
   });
 };
@@ -634,6 +642,7 @@ document.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
 
 (() => {
   const weeks = [
+    { date: '17/11/2026', ids: ['Rcj2u7az2EY', 'Pr-MOnN_W5M', 'cgwg_lRELoY'], ratios: ['9/16', '9/16', '16/9'] },
     { date: '10/11/2026', ids: ['DalGsbQMyDY', 'bHDCpcDSmYU', '9bo4FK53Lh8'] },
     { date: '03/11/2026', ids: ['fU591Sk2a8c', 'fHwU-iZ-RjI', 'LxjL9yFv1uE'] }
   ];
@@ -648,7 +657,7 @@ document.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
     label.innerHTML = `<strong>Semana de ${week.date}</strong><small>${weekIndex === 0 ? 'Mais recente' : 'Semana anterior'}</small>`;
     older.disabled = weekIndex === weeks.length - 1;
     newer.disabled = weekIndex === 0;
-    options.innerHTML = week.ids.map((id, i) => `<button class="faro-lesson-option${i === 0 ? ' is-selected' : ''}" type="button" data-player-id="huelva-lesson-player" data-video-id="${id}" data-title="Kizomba ${i + 1} — Huelva · ${week.date}" aria-pressed="${i === 0}"><strong>Kizomba ${i + 1}</strong><span>${week.date}</span></button>`).join('');
+    options.innerHTML = week.ids.map((id, i) => `<button class="faro-lesson-option${i === 0 ? ' is-selected' : ''}" type="button" data-player-id="huelva-lesson-player" data-video-id="${id}" data-ratio="${week.ratios?.[i] || '16/9'}" data-title="Kizomba ${i + 1} — Huelva · ${week.date}" aria-pressed="${i === 0}"><strong>Kizomba ${i + 1}</strong><span>${week.date}</span></button>`).join('');
     options.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
     options.querySelector('.faro-lesson-option').click();
   }
