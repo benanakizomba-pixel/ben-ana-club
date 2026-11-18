@@ -1359,10 +1359,10 @@ main {
       <h3>QUERO ENTRAR NO BEN &amp; ANA CLUB</h3>
       <form id="aulas-signup-form">
         <input type="text" name="nome" autocomplete="name" placeholder="Nome" aria-label="Nome" required>
-        <input type="text" name="contacto" autocomplete="email" placeholder="WhatsApp ou Email (escolhe um)" aria-label="WhatsApp ou Email" required>
+        <input type="tel" name="contacto" autocomplete="tel" placeholder="WhatsApp" aria-label="WhatsApp" required>
         <button type="submit">ENTRAR NO CLUB</button>
       </form>
-      <small>Deixa apenas um contacto: WhatsApp ou email.</small>
+      <small>Indica o teu número de WhatsApp.</small>
       <p id="aulas-signup-status" aria-live="polite"></p>
     </div>
   </section>
@@ -1550,9 +1550,7 @@ document.getElementById("aulas-signup-form").addEventListener("submit", async fu
   const payload = {
     primeiroNome: parts.shift() || "",
     ultimoNome: parts.join(" "),
-    telefone: contact,
-    contacto: contact,
-    email: contact.includes("@") ? contact : ""
+    telefone: contact
   };
   button.disabled = true;
   button.textContent = "A ENVIAR...";
