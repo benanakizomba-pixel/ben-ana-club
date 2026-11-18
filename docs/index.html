@@ -448,6 +448,14 @@ min-height: 340px;
   font-size: 16px;
   text-align: center;
 }
+.free-class-signup-state[hidden] { display: none !important; }
+.free-class-signup .signup-subtitle {
+  margin: 0 0 13px;
+  color: #d0d0d0;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
 .free-class-signup form {
   display: grid;
   grid-template-columns: 1fr 1.2fr auto;
@@ -475,6 +483,18 @@ min-height: 340px;
   cursor: pointer;
 }
 .free-class-signup button:disabled { opacity: .65; cursor: wait; }
+.free-class-visit {
+  display: block;
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 12px 20px;
+  color: #111;
+  background: #d8b45a;
+  border-radius: 8px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
 .free-class-signup small,
 .free-class-signup [aria-live] {
   display: block;
@@ -1337,14 +1357,21 @@ main {
     </article>
 
     <div class="free-class-signup">
-      <h3>QUERO ENTRAR NO BEN &amp; ANA CLUB</h3>
-      <form id="aulas-signup-form">
-        <input type="text" name="nome" autocomplete="name" placeholder="Nome" aria-label="Nome" required>
-        <input type="tel" name="contacto" autocomplete="tel" placeholder="WhatsApp" aria-label="WhatsApp" required>
-        <button type="submit">ENTRAR NO CLUB</button>
-      </form>
-      <small>Indica o teu número de WhatsApp.</small>
-      <p id="aulas-signup-status" aria-live="polite"></p>
+      <div id="aulas-signup-new" class="free-class-signup-state">
+        <h3>QUERO ENTRAR NO BEN &amp; ANA CLUB</h3>
+        <p class="signup-subtitle">Deixa o teu nome e o teu WhatsApp e entra já para a aula gratuita. Sem pagar nada, sem complicações.</p>
+        <form id="aulas-signup-form">
+          <input type="text" name="nome" autocomplete="name" placeholder="Nome" aria-label="Nome" required>
+          <input type="tel" name="contacto" autocomplete="tel" placeholder="WhatsApp" aria-label="WhatsApp" required>
+          <button type="submit">ENTRAR NO CLUB →</button>
+        </form>
+        <small>Sem spam. Só Kizomba, aulas e convites para dançar. Podes sair quando quiseres.</small>
+      </div>
+      <div id="aulas-signup-returning" class="free-class-signup-state" hidden>
+        <h3>BEM-VINDO(A) DE VOLTA AO CLUB</h3>
+        <p class="signup-subtitle">A tua aula gratuita já está aqui em cima. Boa aula!</p>
+        <a class="free-class-visit" href="./">VISITAR O CLUB →</a>
+      </div>
     </div>
   </section>
 
@@ -1526,11 +1553,24 @@ document.getElementById("formulario-clube").addEventListener("submit", async fun
 });
 
 
-document.getElementById("aulas-signup-form").addEventListener("submit", async function(event) {
+function mostrarEstadoInscricaoAulas() {
+  const cookiesDoClub = document.cookie.split(";").some((cookie) => /^(benAnaClubNome|benAnaClubWhatsApp|benAnaMembro)=/.test(cookie.trim()));
+  const inscrito = Boolean(
+    localStorage.getItem("benAnaClubNome") ||
+    localStorage.getItem("benAnaClubWhatsApp") ||
+    localStorage.getItem("benAnaMembro") === "sim" ||
+    sessionStorage.getItem("benAnaMembro") === "sim" ||
+    cookiesDoClub
+  );
+  document.getElementById("aulas-signup-new").hidden = inscrito;
+  document.getElementById("aulas-signup-returning").hidden = !inscrito;
+}
+
+mostrarEstadoInscricaoAulas();
+
+document.getElementById("aulas-signup-form").addEventListener("submit", function(event) {
   event.preventDefault();
   const form = this;
-  const button = form.querySelector('button[type="submit"]');
-  const status = document.getElementById("aulas-signup-status");
   const name = form.elements.nome.value.trim();
   const contact = form.elements.contacto.value.trim();
   const parts = name.split(/\s+/);
@@ -1539,25 +1579,17 @@ document.getElementById("aulas-signup-form").addEventListener("submit", async fu
     ultimoNome: parts.join(" "),
     telefone: contact
   };
-  button.disabled = true;
-  button.textContent = "A ENVIAR...";
-  status.textContent = "A enviar o teu pedido...";
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbxsD2c-pmJO0RvsYxst4H7uycRMmbcDg0OAYaR_pJfzAht3y-lqp3lidzCrXoRtY7oSlQ/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
-    localStorage.setItem("benAnaMembro", "sim");
-    status.textContent = "Pedido enviado. Bem-vindo ao Ben & Ana Club!";
-    window.location.href = "membros.html";
-  } catch (error) {
-    console.error("Não foi possível enviar o pedido de entrada:", error);
-    status.textContent = "Não foi possível enviar. Tenta novamente, por favor.";
-    button.disabled = false;
-    button.textContent = "ENTRAR NO CLUB";
-  }
+  localStorage.setItem("benAnaClubNome", name);
+  localStorage.setItem("benAnaClubWhatsApp", contact);
+  document.getElementById("aulas-signup-new").hidden = true;
+  document.getElementById("aulas-signup-returning").hidden = false;
+  form.reset();
+  void fetch("https://script.google.com/macros/s/AKfycbxsD2c-pmJO0RvsYxst4H7uycRMmbcDg0OAYaR_pJfzAht3y-lqp3lidzCrXoRtY7oSlQ/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload)
+  }).catch((error) => console.error("Não foi possível enviar o registo da aula gratuita:", error));
 });
 </script>
 <script src="pwa-register.js" defer></script>
