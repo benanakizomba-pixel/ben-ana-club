@@ -815,25 +815,25 @@ main {
   box-sizing: border-box;
 }
 
-.kem-ownership {
-  margin: 0 0 10px;
-  text-align: center;
+.kem-banner > a:first-of-type {
+  position: relative;
+  display: block;
 }
 .kem-ownership-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
   display: inline-block;
-  padding: 6px 13px;
+  padding: 7px 11px;
   color: #f2d47d;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: .09em;
-  background: #14120e;
-  border: 1px solid #8e7133;
+  background: rgba(12, 12, 12, .82);
+  border: 1px solid #b08d36;
   border-radius: 999px;
-}
-.kem-ownership p {
-  margin: 6px 0 0;
-  color: #d0c8b7;
-  font-size: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, .32);
 }
 
 .kem-banner img {
@@ -987,13 +987,10 @@ main {
 </nav>
 
 <section class="kem-banner" id="kem-inscricao">
-  <div class="kem-ownership">
-    <span class="kem-ownership-label">O NOSSO FESTIVAL</span>
-    <p>Idealizado e organizado por Ben &amp; Ana</p>
-  </div>
   <a href="https://facebook.com/events/s/kizomba-exclusive-meeting/1730446348570110/"
      target="_blank" rel="noopener noreferrer"
      aria-label="Inscrever-se no evento Kizomba Exclusive Meeting no Facebook">
+    <span class="kem-ownership-label">O NOSSO FESTIVAL</span>
     <img src="assets/stories/kem-algarve-2027.png"
          alt="KEM — Kizomba Exclusive Meeting, Algarve, 26–28 fevereiro 2027. Clica para te inscrever no Facebook.">
   </a>
