@@ -384,6 +384,148 @@ min-height: 340px;
   margin: 0 10px 12px;
 }
 
+/* Aulas gratuitas e biblioteca em carrosséis horizontais */
+.free-class-feature {
+  scroll-margin-top: 12px;
+  margin: 18px 0 28px;
+  padding: 18px;
+  background: linear-gradient(145deg, #201b10, #111 52%);
+  border: 1px solid #d8b45a;
+  border-radius: 16px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+}
+
+.free-class-heading { text-align: center; }
+.free-class-tag {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #111;
+  background: #d8b45a;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.free-class-heading h2 {
+  margin: 0 0 7px;
+  color: #f2d492;
+  font-size: clamp(20px, 4vw, 27px);
+  line-height: 1.15;
+}
+.free-class-heading p {
+  margin: 0 0 16px;
+  color: #e5e0d6;
+  font-size: 14px;
+}
+.free-class-video {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid #493b20;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .38);
+}
+.free-class-video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+.free-class-signup {
+  width: min(100%, 900px);
+  box-sizing: border-box;
+  margin: 14px auto 0;
+  padding: 15px;
+  background: #0c0c0c;
+  border: 1px solid #3a3121;
+  border-radius: 12px;
+}
+.free-class-signup h3 {
+  margin: 0 0 12px;
+  color: #f2d492;
+  font-size: 16px;
+  text-align: center;
+}
+.free-class-signup form {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto;
+  gap: 9px;
+}
+.free-class-signup input {
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px;
+  color: #fff;
+  background: #171717;
+  border: 1px solid #51452c;
+  border-radius: 8px;
+  font: inherit;
+}
+.free-class-signup input:focus { outline: 2px solid #d8b45a; outline-offset: 1px; }
+.free-class-signup button {
+  padding: 12px 16px;
+  color: #111;
+  background: #d8b45a;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.free-class-signup button:disabled { opacity: .65; cursor: wait; }
+.free-class-signup small,
+.free-class-signup [aria-live] {
+  display: block;
+  margin: 8px 0 0;
+  color: #b9b4aa;
+  font-size: 12px;
+  text-align: center;
+}
+.lesson-video-row { margin: 24px 0; }
+.lesson-video-row h3 {
+  margin: 0 0 10px;
+  color: #d8b45a;
+  font-size: 17px;
+}
+.lesson-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 2px 2px 12px;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #8c7135 #171717;
+}
+.lesson-carousel .video-card {
+  flex: 0 0 clamp(250px, 34vw, 360px);
+  scroll-snap-align: start;
+}
+.lesson-carousel .video-card h4 {
+  min-height: 36px;
+  margin: 10px 11px 12px;
+  color: #eee;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.lesson-carousel iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #000;
+}
+@media (max-width: 600px) {
+  .free-class-feature { margin: 14px 0 24px; padding: 13px; }
+  .free-class-signup { padding: 12px; }
+  .free-class-signup form { grid-template-columns: 1fr; }
+  .free-class-signup button { width: 100%; }
+  .lesson-carousel .video-card { flex-basis: 84%; }
+  .lesson-video-row h3 { font-size: 16px; }
+}
+
 .event-feature {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
@@ -1176,18 +1318,75 @@ main {
 </section>
 
 <section id="aulas" class="content-section">
-  <h2>Aulas Ben & Ana</h2>
-  <p>Aprende Kizomba, Bachata e Salsa connosco.</p>
-  <button class="button" id="botao-entrar-clube-aulas" type="button" onclick="abrirClube()">ENTRAR NO CLUBE</button>
+  <section id="aulas-gratuitas" class="free-class-feature" aria-labelledby="free-class-title">
+    <header class="free-class-heading">
+      <span class="free-class-tag">AULA GRATUITA</span>
+      <h2 id="free-class-title">A TUA AULA GRATUITA JÁ ESTÁ AQUI</h2>
+      <p>Começa por aqui. Sem saber dançar? Melhor ainda.</p>
+    </header>
 
-  <div class="video-gallery">
-    <article class="video-card">
-      <img src="assets/stories/aulas.jpg" alt="Ben e Ana a dançar">
-      <h3>A magia da dança</h3>
-      <p>Kizomba, Bachata e Salsa.</p>
+    <article class="free-class-video" aria-label="Aula gratuita de Kizomba">
+      <iframe
+        src="https://www.youtube.com/embed/vYiMmM6crV0?rel=0&amp;modestbranding=1"
+        title="Aprender Kizomba com Ben Pedrosa | Aula 1 a 4"
+        loading="eager"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
     </article>
+
+    <div class="free-class-signup">
+      <h3>QUERO ENTRAR NO BEN &amp; ANA CLUB</h3>
+      <form id="aulas-signup-form">
+        <input type="text" name="nome" autocomplete="name" placeholder="Nome" aria-label="Nome" required>
+        <input type="text" name="contacto" autocomplete="email" placeholder="WhatsApp ou Email (escolhe um)" aria-label="WhatsApp ou Email" required>
+        <button type="submit">ENTRAR NO CLUB</button>
+      </form>
+      <small>Deixa apenas um contacto: WhatsApp ou email.</small>
+      <p id="aulas-signup-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div class="lesson-video-row">
+    <h3>FILA 1 — AULAS GRÁTIS</h3>
+    <div class="lesson-carousel" aria-label="Carrossel de aulas grátis">
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/vYiMmM6crV0?rel=0&amp;modestbranding=1" title="Aprender Kizomba com Ben Pedrosa | Aula 1 a 4" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Aprender Kizomba com Ben Pedrosa | Aula 1 a 4</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/lw1HOJd03vg?rel=0&amp;modestbranding=1" title="Ben &amp; Ana curso de 1 hora - Aprende a dançar kizomba" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Ben &amp; Ana curso de 1 hora - Aprende a dançar kizomba</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/-ysS0vCdRnw?rel=0&amp;modestbranding=1" title="Cours de Kizomba - Ben Pedrosa | Classe 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Cours de Kizomba - Ben Pedrosa | Classe 1</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/PzAhVdgeM7s?rel=0&amp;modestbranding=1" title="Kizomba Classes - Lesson 1 Ben Pedrosa" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Kizomba Classes - Lesson 1 Ben Pedrosa</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/3bHKpXsjfcs?rel=0&amp;modestbranding=1" title="Tutorial de Kiz Tango Ben Pedrosa | Passo Composto 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Tutorial de Kiz Tango Ben Pedrosa | Passo Composto 1</h4></article>
+    </div>
+  </div>
+
+  <div class="lesson-video-row">
+    <h3>FILA 2 — O QUE FAZER QUANDO TE ENGANAS</h3>
+    <div class="lesson-carousel" aria-label="Carrossel sobre erros e dança">
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/5q9u6YVw0iM?rel=0&amp;modestbranding=1" title="O que fazer quando te enganas a dançar? Ben &amp; Ana" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>O que fazer quando te enganas a dançar? Ben &amp; Ana</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/E81-ugVWGr8?rel=0&amp;modestbranding=1" title="Energia Ben &amp; Ana - Kizomba Teachers" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Energia Ben &amp; Ana - Kizomba Teachers</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/YOW589wqako?rel=0&amp;modestbranding=1" title="Abuelas africanas mostram como se faz kizomba" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Abuelas africanas mostram como se faz kizomba</h4></article>
+    </div>
+  </div>
+
+  <div class="lesson-video-row">
+    <h3>FILA 3 — BASTIDORES</h3>
+    <div class="lesson-carousel" aria-label="Carrossel de bastidores">
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/K3JXXNM-5uk?rel=0&amp;modestbranding=1" title="Um dia com Ben Pedrosa num Workshop de Dança" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Um dia com Ben Pedrosa num Workshop de Dança</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/hP2e1uPpwlQ?rel=0&amp;modestbranding=1" title="Interview avec Ben et Ana - Entrevista kizomba" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Interview avec Ben et Ana - Entrevista kizomba</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/T9Rcd0irz-E?rel=0&amp;modestbranding=1" title="Ben Pedrosa Favorite dance videos - Leo &amp; Jomante" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Ben Pedrosa Favorite dance videos - Leo &amp; Jomante</h4></article>
+    </div>
+  </div>
+
+  <div class="lesson-video-row">
+    <h3>FILA 4 — CURIOSIDADES SOBRE NÓS</h3>
+    <div class="lesson-carousel" aria-label="Carrossel de curiosidades sobre Ben e Ana">
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/EQLXTKfVkTI?rel=0&amp;modestbranding=1" title="A pergunta a Ben &amp; Ana - Para quando um novo bebé?" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>A pergunta a Ben &amp; Ana - Para quando um novo bebé?</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/1W-AB8_hW6s?rel=0&amp;modestbranding=1" title="Casal apaixonado de bebé dança na praia Kizomba" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Casal apaixonado de bebé dança na praia Kizomba</h4></article>
+      <article class="video-card"><iframe src="https://www.youtube.com/embed/f1hFBVtZM8s?rel=0&amp;modestbranding=1" title="Até na areia da praia eles dançam - Ben &amp; Ana" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h4>Até na areia da praia eles dançam - Ben &amp; Ana</h4></article>
+    </div>
   </div>
 </section>
+
 
 <footer><button type="button" class="analytics-preferences" id="analytics-preferences">Preferências de cookies</button></footer>
 
@@ -1326,9 +1525,46 @@ document.getElementById("formulario-clube").addEventListener("submit", async fun
   window.location.replace("membros.html");
 });
 
+
+document.getElementById("aulas-signup-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  const form = this;
+  const button = form.querySelector('button[type="submit"]');
+  const status = document.getElementById("aulas-signup-status");
+  const name = form.elements.nome.value.trim();
+  const contact = form.elements.contacto.value.trim();
+  const parts = name.split(/\s+/);
+  const payload = {
+    primeiroNome: parts.shift() || "",
+    ultimoNome: parts.join(" "),
+    telefone: contact,
+    contacto: contact,
+    email: contact.includes("@") ? contact : ""
+  };
+  button.disabled = true;
+  button.textContent = "A ENVIAR...";
+  status.textContent = "A enviar o teu pedido...";
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbxsD2c-pmJO0RvsYxst4H7uycRMmbcDg0OAYaR_pJfzAht3y-lqp3lidzCrXoRtY7oSlQ/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+    localStorage.setItem("benAnaMembro", "sim");
+    status.textContent = "Pedido enviado. Bem-vindo ao Ben & Ana Club!";
+    window.location.href = "membros.html";
+  } catch (error) {
+    console.error("Não foi possível enviar o pedido de entrada:", error);
+    status.textContent = "Não foi possível enviar. Tenta novamente, por favor.";
+    button.disabled = false;
+    button.textContent = "ENTRAR NO CLUB";
+  }
+});
 </script>
 <script src="pwa-register.js" defer></script>
 
 
 </body>
 </html>
+

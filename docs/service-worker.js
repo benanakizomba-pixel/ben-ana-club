@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ben-ana-club-v47';
+const CACHE_NAME = 'ben-ana-club-v48';
 const APP_SHELL = [
   './',
   './index.html',
@@ -89,3 +89,4 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
