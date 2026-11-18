@@ -485,15 +485,26 @@ min-height: 340px;
 .free-class-signup button:disabled { opacity: .65; cursor: wait; }
 .free-class-visit {
   display: block;
-  width: fit-content;
+  width: 100%;
+  box-sizing: border-box;
   margin: 14px auto 0;
-  padding: 12px 20px;
+  padding: 15px 20px;
   color: #111;
   background: #d8b45a;
   border-radius: 8px;
   font-weight: 800;
+  font-size: 15px;
   text-align: center;
-  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+.free-class-rest-link {
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0;
+  color: #d8b45a;
+  font-size: 12px;
+  text-align: center;
 }
 .free-class-signup small,
 .free-class-signup [aria-live] {
@@ -1345,7 +1356,7 @@ main {
       <p>Começa por aqui. Sem saber dançar? Melhor ainda.</p>
     </header>
 
-    <article class="free-class-video" aria-label="Aula gratuita de Kizomba">
+    <article id="free-class-video" class="free-class-video" aria-label="Aula gratuita de Kizomba">
       <iframe
         src="https://www.youtube.com/embed/vYiMmM6crV0?rel=0&amp;modestbranding=1"
         title="Aprender Kizomba com Ben Pedrosa | Aula 1 a 4"
@@ -1370,7 +1381,13 @@ main {
       <div id="aulas-signup-returning" class="free-class-signup-state" hidden>
         <h3>BEM-VINDO(A) DE VOLTA AO CLUB</h3>
         <p class="signup-subtitle">A tua aula gratuita já está aqui em cima. Boa aula!</p>
-        <a class="free-class-visit" href="./">VISITAR O CLUB →</a>
+        <button class="free-class-visit" type="button" onclick="verAulaGratuita()">VER AULA GRATUITA ↑</button>
+        <a class="free-class-rest-link" href="./">Ver o resto do Club →</a>
+      </div>
+      <div id="aulas-signup-confirmed" class="free-class-signup-state" hidden>
+        <h3 id="aulas-signup-confirmed-title">BEM-VINDO(A) AO CLUB!</h3>
+        <p class="signup-subtitle">Agora carrega no PLAY e vê a tua aula gratuita.</p>
+        <button class="free-class-visit" type="button" onclick="verAulaGratuita()">VER AULA GRATUITA ↑</button>
       </div>
     </div>
   </section>
@@ -1564,9 +1581,14 @@ function mostrarEstadoInscricaoAulas() {
   );
   document.getElementById("aulas-signup-new").hidden = inscrito;
   document.getElementById("aulas-signup-returning").hidden = !inscrito;
+  document.getElementById("aulas-signup-confirmed").hidden = true;
 }
 
 mostrarEstadoInscricaoAulas();
+
+function verAulaGratuita() {
+  document.getElementById("free-class-video")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 document.getElementById("aulas-signup-form").addEventListener("submit", function(event) {
   event.preventDefault();
@@ -1582,7 +1604,9 @@ document.getElementById("aulas-signup-form").addEventListener("submit", function
   localStorage.setItem("benAnaClubNome", name);
   localStorage.setItem("benAnaClubWhatsApp", contact);
   document.getElementById("aulas-signup-new").hidden = true;
-  document.getElementById("aulas-signup-returning").hidden = false;
+  document.getElementById("aulas-signup-returning").hidden = true;
+  document.getElementById("aulas-signup-confirmed-title").textContent = `BEM-VINDO(A) AO CLUB, ${name}!`;
+  document.getElementById("aulas-signup-confirmed").hidden = false;
   form.reset();
   void fetch("https://script.google.com/macros/s/AKfycbxsD2c-pmJO0RvsYxst4H7uycRMmbcDg0OAYaR_pJfzAht3y-lqp3lidzCrXoRtY7oSlQ/exec", {
     method: "POST",
