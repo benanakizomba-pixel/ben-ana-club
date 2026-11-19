@@ -580,21 +580,31 @@ min-height: 340px;
 }
 
 .tour-france-heading {
-  margin: 0 0 18px;
+  margin: 0 0 22px;
+  padding: 8px 10px 18px;
   color: #e6c567;
   text-align: center;
 }
 
 .tour-france-heading h3 {
-  margin: 0 0 6px;
-  font-size: clamp(20px, 2.4vw, 28px);
-  letter-spacing: 0.1em;
+  margin: 0 0 10px;
+  color: #f0d28a;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  line-height: 1.1;
+  text-shadow: 0 2px 14px rgba(216, 180, 90, 0.18);
 }
 
 .tour-france-heading p {
   margin: 0;
-  color: #eee;
-  font-size: 14px;
+  color: #e8dfca;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.7;
+  text-transform: uppercase;
 }
 
 .tour-france-events {
@@ -963,6 +973,9 @@ main {
   }
 
   .tour-france-box { padding: 14px; }
+  .tour-france-heading { margin-bottom: 16px; padding: 6px 4px 12px; }
+  .tour-france-heading h3 { font-size: clamp(25px, 7vw, 34px); letter-spacing: 0.14em; }
+  .tour-france-heading p { font-size: 10px; letter-spacing: 0.13em; }
   .tour-france-events { grid-template-columns: 1fr; gap: 12px; }
   .tour-france-events > .event-feature .event-feature-details h3 { font-size: 20px; }
 
