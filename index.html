@@ -570,6 +570,61 @@ min-height: 340px;
   border-radius: 14px;
 }
 
+.tour-france-box {
+  margin: 24px 0;
+  padding: 20px;
+  background: #080808;
+  border: 1px solid #d8b45a;
+  border-radius: 18px;
+  box-shadow: 0 0 24px rgba(216, 180, 90, 0.2), inset 0 0 22px rgba(216, 180, 90, 0.035);
+}
+
+.tour-france-heading {
+  margin: 0 0 18px;
+  color: #e6c567;
+  text-align: center;
+}
+
+.tour-france-heading h3 {
+  margin: 0 0 6px;
+  font-size: clamp(20px, 2.4vw, 28px);
+  letter-spacing: 0.1em;
+}
+
+.tour-france-heading p {
+  margin: 0;
+  color: #eee;
+  font-size: 14px;
+}
+
+.tour-france-events {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.tour-france-events > .event-feature {
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 14px;
+  margin: 0;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tour-france-events > .event-feature .event-feature-details h3 {
+  font-size: 18px;
+}
+
+.tour-france-events > .event-feature .event-feature-details ul {
+  padding-left: 18px;
+}
+
+.tour-france-events > .event-feature .event-feature-details li {
+  font-size: 14px;
+}
+
 .event-feature-posters {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -907,6 +962,10 @@ main {
     font-size: 20px;
   }
 
+  .tour-france-box { padding: 14px; }
+  .tour-france-events { grid-template-columns: 1fr; gap: 12px; }
+  .tour-france-events > .event-feature .event-feature-details h3 { font-size: 20px; }
+
   main {
     width: 100%;
     max-width: 600px;
@@ -1196,6 +1255,13 @@ main {
   <h2>Eventos Ben & Ana</h2>
   <p>Descobre workshops, festivais e viagens connosco.</p>
 
+  <div class="tour-france-box">
+    <header class="tour-france-heading">
+      <h3>TOUR FRANCE 🇫🇷</h3>
+      <p>18 • 19 • 20 DÉCEMBRE 2026 — Ben &amp; Ana en France</p>
+    </header>
+    <div class="tour-france-events">
+
   <article class="event-feature">
     <div class="event-feature-posters single-poster">
       <img src="assets/stories/saint-fargeau-2026.jpg" alt="Cartaz de Ben & Ana em Saint-Fargeau-Ponthierry, 18 de dezembro de 2026">
@@ -1249,6 +1315,9 @@ main {
       <a class="event-ticket-link" data-i18n="comprar-bilhetes" href="https://www.billetweb.fr/kiz-ben-ana-stage-sociale" target="_blank" rel="noopener noreferrer">COMPRAR BILHETES</a>
     </div>
   </article>
+
+    </div>
+  </div>
 
   <article class="event-feature">
     <div class="event-feature-posters single-poster">
