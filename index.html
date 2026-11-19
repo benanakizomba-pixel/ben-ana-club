@@ -1599,7 +1599,7 @@ if (idiomaFrances) {
 }
 
 function abrirClube() {
-  if (localStorage.getItem("benAnaMembro") === "sim") {
+  if (eMembroDoClub()) {
     window.location.href = "membros.html";
     return;
   }
@@ -1616,11 +1616,17 @@ function fecharClube() {
 function atualizarBotaoEntrada() {
   const botoes = document.querySelectorAll("#botao-entrar-clube, #botao-entrar-clube-aulas");
   if (!botoes.length) return;
-  const eMembro = localStorage.getItem("benAnaMembro") === "sim";
+  const eMembro = eMembroDoClub();
   const texto = idiomaFrances
     ? (eMembro ? "ACCÉDER À L’ESPACE ÉLÈVES" : "ENTRER DANS LE CLUB")
     : (eMembro ? "ENTRAR NA ÁREA DE ALUNOS" : "ENTRAR NO CLUBE");
   botoes.forEach((botao) => { botao.textContent = texto; });
+}
+
+function eMembroDoClub() {
+  return localStorage.getItem("benAnaMembro") === "sim" ||
+    Boolean(localStorage.getItem("benAnaClubNome")) ||
+    Boolean(localStorage.getItem("benAnaClubWhatsApp"));
 }
 
 window.addEventListener("pageshow", () => {
@@ -1653,6 +1659,8 @@ document.getElementById("formulario-clube").addEventListener("submit", async fun
 
   // Guarda a entrada neste dispositivo para não voltar a pedir os dados.
   localStorage.setItem("benAnaMembro", "sim");
+  localStorage.setItem("benAnaClubNome", `${dados.primeiroNome} ${dados.ultimoNome}`.trim());
+  localStorage.setItem("benAnaClubWhatsApp", dados.telefone);
   let envioConfirmado = false;
 
   try {
@@ -1713,6 +1721,8 @@ document.getElementById("aulas-signup-form").addEventListener("submit", function
   };
   localStorage.setItem("benAnaClubNome", name);
   localStorage.setItem("benAnaClubWhatsApp", contact);
+  localStorage.setItem("benAnaMembro", "sim");
+  atualizarBotaoEntrada();
   document.getElementById("aulas-signup-new").hidden = true;
   document.getElementById("aulas-signup-returning").hidden = true;
   document.getElementById("aulas-signup-confirmed-title").textContent = `BEM-VINDO(A) AO CLUB, ${name}!`;
