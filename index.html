@@ -630,6 +630,50 @@ min-height: 340px;
   border-radius: 9px;
 }
 
+#tour-france .tour-france-intro {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+#tour-france .tour-france-intro p {
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.tour-france-list {
+  display: grid;
+  gap: 14px;
+}
+
+.tour-france-card {
+  padding: 18px;
+  background: linear-gradient(145deg, #18150f, #101010 68%);
+  border: 1px solid #574824;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tour-france-card h3 {
+  margin: 0 0 12px;
+  color: #e6c567;
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.tour-france-card p,
+.tour-france-card li {
+  color: #eee;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.tour-france-card p { margin: 0 0 8px; }
+.tour-france-card ul { margin: 8px 0 0; padding-left: 20px; }
+.tour-france-card li + li { margin-top: 4px; }
+.tour-france-card .tour-france-lead { color: #fff; font-weight: 700; }
+.tour-france-card .tour-france-link { min-width: 150px; }
+
 .tiktok-thumbnail {
   display: block;
   position: relative;
@@ -906,6 +950,9 @@ main {
   .event-feature-details h3 {
     font-size: 20px;
   }
+
+  .tour-france-card { padding: 15px; }
+  .tour-france-card h3 { font-size: 17px; }
 
   main {
     width: 100%;
@@ -1191,6 +1238,42 @@ main {
      target="_blank" rel="noopener noreferrer">INSCREVE-TE</a>
 </section>
 
+<section id="tour-france" class="content-section" aria-labelledby="tour-france-title">
+  <header class="tour-france-intro">
+    <h2 id="tour-france-title">TOUR FRANCE 🇫🇷</h2>
+    <p>3 datas. 3 cidades. Ben &amp; Ana ao vivo em França. 18, 19 e 20 de Dezembro 2026</p>
+  </header>
+
+  <div class="tour-france-list">
+    <article class="tour-france-card">
+      <h3>18 DÉCEMBRE — SAINT-FARGEAU-PONTHIERRY</h3>
+      <p class="tour-france-lead">Inodakiz PRÉSENTE — Ben &amp; Ana STAGE KIZOMBA</p>
+      <ul>
+        <li><strong>Stage Kizomba:</strong> 20h - 22h</li>
+        <li>Soirée 100% Kizomba — DJ El Chapo</li>
+        <li><strong>Stage + Soirée:</strong> 30€</li>
+        <li><strong>Local:</strong> Le Baramundi, 2 Allée des Lutins, 77310 Saint-Fargeau-Ponthierry</li>
+      </ul>
+      <a class="event-ticket-link tour-france-link" href="https://www.facebook.com/share/1CTVwogjtg/" target="_blank" rel="noopener noreferrer">VER EVENTO</a>
+    </article>
+
+    <article class="tour-france-card">
+      <h3>19 DÉCEMBRE — GARDANNE</h3>
+      <p class="tour-france-lead">Ginga de Noël — Masterclass Ben &amp; Ana Kizomba Fusion</p>
+      <p>18h - 21h — DJ Diablo &amp; DJ Pumba</p>
+      <p><strong>Local:</strong> Le Chêne Vert, Gardanne</p>
+      <a class="event-ticket-link tour-france-link" href="https://facebook.com/events/s/masterclass-ben-ana-kizomba/1616001240325518/" target="_blank" rel="noopener noreferrer">VER EVENTO</a>
+    </article>
+
+    <article class="tour-france-card">
+      <h3>20 DÉCEMBRE — TOULOUSE</h3>
+      <p class="tour-france-lead">Workshop Ben &amp; Ana 15h - 17h + Social 17h - 21h</p>
+      <p>Entrada 40€, bebida não alcoólica oferecida</p>
+      <p><strong>Local:</strong> Moulin Tropical, 35 rue Dinetard, 31500 Toulouse</p>
+      <a class="event-ticket-link tour-france-link" href="https://www.facebook.com/share/1Ckgh61h4e/" target="_blank" rel="noopener noreferrer">VER EVENTO</a>
+    </article>
+  </div>
+</section>
 
 <section id="eventos" class="content-section">
   <h2>Eventos Ben & Ana</h2>
