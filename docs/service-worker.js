@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ben-ana-club-v61';
+const CACHE_NAME = 'ben-ana-club-v62';
 const APP_SHELL = [
   './',
   './index.html',
@@ -23,7 +23,7 @@ const APP_SHELL = [
   './assets/stories/ginga-noel-masterclass-2026.jpg',
   './assets/stories/saint-fargeau-2026.jpg',
   './assets/stories/toulouse-2026.jpg',
-  './assets/stories/aquae-flavie-2026.jpg',
+  './assets/stories/djerba-2027.jpg',
   './assets/stories/kem-algarve-2027.png',
   './assets/stories/open-summer-festival-2027.jpg',
   './assets/stories/playlist.jpg',
