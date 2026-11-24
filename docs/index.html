@@ -659,6 +659,43 @@ min-height: 340px;
   background: #000;
 }
 
+.djerba-video-cover {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 9px;
+  background: #000;
+  cursor: pointer;
+}
+
+.djerba-video-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+.djerba-video-cover span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 68px;
+  height: 48px;
+  place-items: center;
+  color: #fff;
+  background: #f00025;
+  border-radius: 14px;
+  font-size: 28px;
+  transform: translate(-50%, -50%);
+  transition: background-color 160ms ease;
+}
+
+.djerba-video-cover:hover span { background: #c90020; }
+
 .event-feature-posters.single-poster {
   grid-template-columns: 1fr;
 }
@@ -1321,14 +1358,10 @@ main {
 
   <article class="event-feature" id="viagem-djerba-2027">
     <div class="event-feature-posters single-poster">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/L8_YbO6VvL0?rel=0"
-        title="Vídeo promocional da viagem de dança a Djerba, Tunísia 2027 — Ben &amp; Ana"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
+      <button class="djerba-video-cover" type="button" aria-label="Reproduzir o vídeo promocional da viagem a Djerba, Tunísia 2027">
+        <img src="assets/stories/djerba-2027.jpg" alt="Capa do vídeo promocional da viagem a Djerba, Tunísia 2027">
+        <span aria-hidden="true">▶</span>
+      </button>
     </div>
     <div class="event-feature-details">
       <span class="event-label">VIAGEM · 18–25 DE SETEMBRO DE 2027</span>
@@ -1744,6 +1777,19 @@ document.getElementById("aulas-signup-form").addEventListener("submit", function
     headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(payload)
   }).catch((error) => console.error("Não foi possível enviar o registo da aula gratuita:", error));
+});
+
+document.querySelectorAll(".djerba-video-cover").forEach((cover) => {
+  cover.addEventListener("click", () => {
+    const player = document.createElement("iframe");
+    player.src = "https://www.youtube-nocookie.com/embed/L8_YbO6VvL0?autoplay=1&rel=0";
+    player.title = cover.getAttribute("aria-label");
+    player.loading = "eager";
+    player.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    player.referrerPolicy = "strict-origin-when-cross-origin";
+    player.allowFullscreen = true;
+    cover.replaceWith(player);
+  });
 });
 </script>
 <script src="pwa-register.js" defer></script>
