@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ben-ana-club-v63';
+const CACHE_NAME = 'ben-ana-club-v64';
 const APP_SHELL = [
   './',
   './index.html',
