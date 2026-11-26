@@ -268,26 +268,26 @@
   <h3>Aulas de Faro</h3>
   <div class="huelva-week-nav faro-week-nav" aria-label="Navegar pelas semanas de aulas de Faro">
     <button id="faro-week-older" type="button" aria-label="Semana anterior">‹</button>
-    <div class="huelva-week-label" id="faro-week-label" aria-live="polite"><strong>Semana de 18/11/2026</strong><small>Mais recente</small></div>
+    <div class="huelva-week-label" id="faro-week-label" aria-live="polite"><strong>Semana de 25/11/2026</strong><small>Mais recente</small></div>
     <button id="faro-week-newer" type="button" aria-label="Semana mais recente" disabled>›</button>
   </div>
   <p class="huelva-week-hint">Desliza para ver as aulas anteriores</p>
   <p>Escolhe a aula que queres rever:</p>
   <div class="faro-lesson-options" id="faro-lesson-options" role="group" aria-label="Selecionar aula de Faro">
-    <button class="faro-lesson-option is-selected" type="button" data-player-id="faro-lesson-player" data-video-id="WfnEoyw8QEg" data-title="Kizomba — Faro · 18/11/2026" aria-pressed="true">
-      <strong>Kizomba</strong><span>18/11/2026</span>
+    <button class="faro-lesson-option is-selected" type="button" data-player-id="faro-lesson-player" data-video-id="-V7qrDMKpbM" data-title="Kizomba — Faro · 25/11/2026" aria-pressed="true">
+      <strong>Kizomba</strong><span>25/11/2026</span>
     </button>
-    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="ByRvb5yN4Ow" data-title="Bachata — Faro · 18/11/2026" aria-pressed="false">
-      <strong>Bachata</strong><span>18/11/2026</span>
+    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="_RPQ5v7kVeo" data-title="Bachata — Faro · 25/11/2026" aria-pressed="false">
+      <strong>Bachata</strong><span>25/11/2026</span>
     </button>
-    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="pMeVymyufdA" data-title="Salsa — Faro · 18/11/2026" aria-pressed="false">
-      <strong>Salsa</strong><span>18/11/2026</span>
+    <button class="faro-lesson-option" type="button" data-player-id="faro-lesson-player" data-video-id="U5GhYja14BY" data-title="Salsa — Faro · 25/11/2026" aria-pressed="false">
+      <strong>Salsa</strong><span>25/11/2026</span>
     </button>
   </div>
   <div class="playlist-player">
     <iframe id="faro-lesson-player"
-      src="https://www.youtube.com/embed/WfnEoyw8QEg"
-      title="Kizomba — Faro · 18/11/2026"
+      src="https://www.youtube.com/embed/-V7qrDMKpbM"
+      title="Kizomba — Faro · 25/11/2026"
       loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -663,6 +663,11 @@ document.querySelectorAll('.faro-lesson-option').forEach(ligarBotaoAula);
 
 (() => {
   const weeks = [
+    { date: '25/11/2026', caption: 'Mais recente', lessons: [
+      { name: 'Kizomba', id: '-V7qrDMKpbM', date: '25/11/2026' },
+      { name: 'Bachata', id: '_RPQ5v7kVeo', date: '25/11/2026' },
+      { name: 'Salsa', id: 'U5GhYja14BY', date: '25/11/2026' }
+    ] },
     { date: '18/11/2026', caption: 'Mais recente', lessons: [
       { name: 'Kizomba', id: 'WfnEoyw8QEg', date: '18/11/2026' },
       { name: 'Bachata', id: 'ByRvb5yN4Ow', date: '18/11/2026' },
